@@ -93,6 +93,10 @@
         "PmenuSbar",
         "PmenuThumb",
         "QuickFixLine",
-        "WildMenu"
+        "WildMenu",
+        "Bold",
+        "Italic",
+        "Ignore",
+        "Error"
     ]
 }

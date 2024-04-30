@@ -77,6 +77,22 @@
         "PmenuKind",
         "PmenuExtra",
         "StatusLine",
-        "Visual"
+        "Visual",
+        "CursorColumn",
+        "VisualNOS",
+        "DiffAdded",
+        "DiffRemoved",
+        "un",
+        "SpellBad",
+        "LineNrAbove",
+        "LineNr",
+        "LineNrBelow",
+        "CursorLineNr",
+        "PmenuSel",
+        "StatusLineNC",
+        "PmenuSbar",
+        "PmenuThumb",
+        "QuickFixLine",
+        "WildMenu"
     ]
 }

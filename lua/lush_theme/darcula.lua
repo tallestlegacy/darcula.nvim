@@ -57,270 +57,277 @@ local magenta = hsl(318, 100, 28)
 local debug = { bg = magenta, fg = M.blue }
 
 
-local bold, italic, underline, undercurl, underdashed, strikethrough = "bold", "italic", "underline", "undercurl",
-    "underdashed", "strikethrough";
+local bold, italic, underline, undercurl, underdashed, strikethrough =
+    "bold", "italic", "underline", "undercurl", "underdashed", "strikethrough";
 
 
-local theme = lush(function(injected_functions)
-  local sym = injected_functions.sym
-  return {
+local theme = lush(
+  function(injected_functions)
+    local sym = injected_functions.sym
 
-    -- ╭─────────────────────────────────────────────────────────╮
-    -- │                        Builtin                          │
-    -- ╰─────────────────────────────────────────────────────────╯
+    return {
 
-    -- layers
-    Normal { fg = M.fg, bg = M.bg },          -- background color
-    NormalFloat { fg = M.fg, bg = M.grey02 }, -- modal UI
-    NormalNC { fg = M.fg },
+      -- ╭─────────────────────────────────────────────────────────╮
+      -- │                        Builtin                          │
+      -- ╰─────────────────────────────────────────────────────────╯
 
-    Visual { bg = M.blue },
-    VisualNOS { fg = debug.fg, bg = debug.bg },
+      -- layers
+      Normal { fg = M.fg, bg = M.bg },          -- background color
+      NormalFloat { fg = M.fg, bg = M.grey02 }, -- modal UI
+      FloatBorder { fg = M.grey04 },            -- Border of floating windows.
+      FloatTitle { FloatBorder },               -- Title of floating windows.
+      NormalNC { fg = M.fg },
 
-    -- cursors
-    Cursor { fg = M.bg, bg = M.fg },
-    CursorLine { bg = M.overbg },
-    CursorColumn { CursorLine },
-    Conceal { fg = M.grey03 },
-    TermCursor { Cursor },
-    MatchParen { bg = M.grey03 },
+      Visual { bg = M.blue },
+      VisualNOS { fg = debug.fg, bg = debug.bg },
 
-    -- gutter
-    LineNr { fg = M.grey02 },
-    LineNrAbove { fg = M.fg.da(50) },
-    LineNrBelow { fg = M.fg.da(50) },
-    CursorLineNr { fg = M.fg, gui = bold },
-    SignColumn { LineNr },
-    VertSplit { fg = M.overbg, bg = M.bg }, -- column separating vertically split windows
-    Folded { fg = M.comment, bg = M.overbg },
-    FoldColumn { LineNr },
+      -- cursors
+      Cursor { fg = M.bg, bg = M.fg },
+      CursorLine { bg = M.overbg },
+      CursorColumn { CursorLine },
+      Conceal { fg = M.grey03 },
+      TermCursor { Cursor },
+      MatchParen { bg = M.grey03 },
 
-    -- highlight
-    Search { fg = M.white, bg = M.blue },
-    IncSearch = { Search },
-    Substitute = { Search },
+      -- gutter
+      LineNr { fg = M.grey04, bg = M.bg },
+      LineNrAbove { fg = M.fg.da(50) },
+      LineNrBelow { fg = M.fg.da(50) },
+      CursorLineNr { fg = M.fg, gui = bold },
+      SignColumn { LineNr },
+      VertSplit { fg = M.overbg, bg = M.bg }, -- column separating vertically split windows
+      Folded { fg = M.comment, bg = M.overbg },
+      FoldColumn { LineNr },
 
-    -- diffs
-    DiffAdd { bg = M.darkgreen.da(60) },
-    DiffAdded { DiffAdd },
-    DiffTextAdded { DiffAdd },
-    DiffChange { bg = M.yellow.da(80) },
-    DiffText { bg = M.grey02 },
-    DiffTextChange { DiffChange },
-    DiffDelete { fg = M.red, bg = M.darkred.da(60) },
-    DiffTextDeleted { DiffDelete },
-    DiffRemoved { DiffDelete },
+      -- highlight
+      Search { fg = M.white, bg = M.blue },
+      IncSearch = { Search },
+      Substitute = { Search },
 
-    -- spell
-    SpellBad { gui = undercurl },
+      -- diffs
+      DiffAdd { bg = M.darkgreen.da(60) },
+      DiffAdded { DiffAdd },
+      DiffTextAdded { DiffAdd },
+      DiffChange { bg = M.yellow.da(80) },
+      DiffText { bg = M.grey02 },
+      DiffTextChange { DiffChange },
+      DiffDelete { fg = M.red, bg = M.darkred.da(60) },
+      DiffTextDeleted { DiffDelete },
+      DiffRemoved { DiffDelete },
 
-    -- statusline
-    StatusLine { fg = M.grey04, bg = M.overbg },
-    StatusLineNC { bg = M.grey00 },
+      -- spell
+      SpellBad { gui = undercurl },
 
-    -- tabs
-    TabLine = { bg = M.grey00 },
-    TabLineFill = { bg = M.grey00 },
-    TabLineSel = { fg = M.orange, bg = M.grey00 },
+      -- statusline
+      StatusLine { fg = M.grey04, bg = M.overbg },
+      StatusLineNC { bg = M.grey00 },
 
+      -- tabs
+      TabLine = { bg = M.grey00 },
+      TabLineFill = { bg = M.grey00 },
+      TabLineSel = { fg = M.orange, bg = M.grey00 },
 
-    -- pop-up menus
-    Pmenu { fg = M.grey05, bg = M.grey00 },
-    PmenuSel { bg = M.grey02 },
-    PmenuSbar { Pmenu },
-    PmenuThumb { PmenuSel },
-    WildMenu { Pmenu },
-    QuickFixLine { fg = M.grey05 },
+      -- pop-up menus
+      Pmenu { fg = M.grey05, bg = M.grey03 },
+      PmenuSel { bg = M.grey02 },
+      PmenuSbar { Pmenu },
+      PmenuThumb { PmenuSel },
+      WildMenu { Pmenu },
+      QuickFixLine { fg = M.grey05 },
 
-    -- others
-    Directory { fg = M.white },
-    Title { fg = M.yellow },
+      -- others
+      Directory { fg = M.white },
+      Title { fg = M.yellow },
 
-    -- syntax highlighting
+      -- syntax highlighting
 
-    Comment { fg = M.comment, gui = italic },
+      Comment { fg = M.comment, gui = italic },
 
-    Constant { fg = M.lightblue },
-    Number { Constant },
-    Float { Number },
-    Boolean { Constant },
-    Character { fg = M.white },
-    String { fg = M.darkgreen },
+      Constant { fg = M.lightblue },
+      Number { Constant },
+      Float { Number },
+      Boolean { Constant },
+      Character { fg = M.white },
+      String { fg = M.darkgreen },
 
-    Identifier { fg = M.fg },
-    Function { fg = M.yellow },
+      Identifier { fg = M.white },
+      Function { fg = M.orange },
 
-    Statement { fg = M.orange }, -- (preferred) any statement
-    Label { fg = M.purple },     -- case, default, etc.
-    Keyword { Statement },       -- any other keyword
-    Conditional { Statement },
-    Repeat { Statement },
-    Operator { fg = M.fg },
-    Exception { fg = M.error },
+      Statement { fg = M.orange }, -- (preferred) any statement
+      Label { fg = M.purple },     -- case, default, etc.
+      Keyword { Statement },       -- any other keyword
+      Conditional { Statement },
+      Repeat { Statement },
+      Operator { fg = M.fg },
+      Exception { fg = M.error },
 
-    PreProc { fg = M.green }, --  generic Preprocessor
-    Include { PreProc },      -- preprocessor #include
-    Define { PreProc },       -- preprocessor #define
-    Macro { PreProc },        -- same as Define
-    PreCondit { PreProc },    -- preprocessor #if, #else, #endif, etc.
+      PreProc { fg = M.green }, --  generic Preprocessor
+      Include { PreProc },      -- preprocessor #include
+      Define { PreProc },       -- preprocessor #define
+      Macro { PreProc },        -- same as Define
+      PreCondit { PreProc },    -- preprocessor #if, #else, #endif, etc.
 
-    Type { fg = M.yellow },
-    Typedef { Type },
-    StorageClass { fg = M.purple }, -- static, register, volatile, etc.
-    Structure { StorageClass },     -- struct, union, enum, etc.
+      Type { fg = M.yellow },
+      Typedef { Type },
+      StorageClass { fg = M.purple }, -- static, register, volatile, etc.
+      Structure { StorageClass },     -- struct, union, enum, etc.
 
-    Special { fg = M.orange },      -- (preferred) any special symbol
-    SpecialChar { Special },        -- special character in a constant
-    Tag { fg = M.orange },          -- you can use CTRL-] on this
-    Delimiter { Special },          -- character that needs attention
-    SpecialComment { Special },     -- special things inside a comment
-    Debug { Special },              -- debugging statements
+      Special { fg = M.orange },      -- (preferred) any special symbol
+      SpecialChar { Special },        -- special character in a constant
+      Tag { fg = M.orange },          -- you can use CTRL-] on this
+      Delimiter { Special },          -- character that needs attention
+      SpecialComment { Special },     -- special things inside a comment
+      Debug { Special },              -- debugging statements
 
-    Underlined { gui = underline },
-    Bold { gui = bold },
-    Italic { gui = italic },
-    Ignore { fg = M.comment },         --  left blank, hidden  |hl-Ignore|
-    Error { fg = M.error },            --  any erroneous construct
-    Todo { fg = M.green, gui = bold }, --  anything that needs extra attention
+      Underlined { gui = underline },
+      Bold { gui = bold },
+      Italic { gui = italic },
+      Ignore { fg = M.comment },         --  left blank, hidden  |hl-Ignore|
+      Error { fg = M.error },            --  any erroneous construct
+      Todo { fg = M.green, gui = bold }, --  anything that needs extra attention
 
-    -- diagnostics
-    DiagnosticError { fg = M.error },
-    DiagnosticWarn { fg = M.warn },
-    DiagnosticInfo { fg = M.info },
-    DiagnosticHint { fg = M.info },
-    DiagnosticOk { fg = M.green },
-    DiagnosticVirtualTextError { DiagnosticError },
-    DiagnosticVirtualTextWarn { DiagnosticWarn },
-    DiagnosticVirtualTextInfo { DiagnosticInfo },
-    DiagnosticVirtualTextHint { DiagnosticHint },
-    DiagnosticVirtualTextOk { DiagnosticOk },
-    DiagnosticUnderlineError { gui = undercurl, sp = M.error },
-    DiagnosticUnderlineWarn { gui = undercurl, sp = M.warn },
-    DiagnosticUnderlineInfo { gui = undercurl, sp = M.info },
-    DiagnosticUnderlineHint { gui = undercurl, sp = M.info },
-    DiagnosticUnderlineOk { gui = undercurl, sp = M.green },
-    DiagnosticFloatingError { DiagnosticError },
-    DiagnosticFloatingWarn { DiagnosticWarn },
-    DiagnosticFloatingInfo { DiagnosticInfo },
-    DiagnosticFloatingHint { DiagnosticHint },
-    DiagnosticFloatingOk { DiagnosticOk },
-    DiagnosticSignError { DiagnosticError },
-    DiagnosticSignWarn { DiagnosticWarn },
-    DiagnosticSignInfo { DiagnosticInfo },
-    DiagnosticSignHint { DiagnosticHint },
-    DiagnosticSignOk { DiagnosticOk },
-    DiagnosticUnnecessary { Comment, gui = underdashed },
-    DiagnosticDeprecated { gui = strikethrough },
+      -- diagnostics
+      DiagnosticError { fg = M.error },
+      DiagnosticWarn { fg = M.warn },
+      DiagnosticInfo { fg = M.info },
+      DiagnosticHint { fg = M.info },
+      DiagnosticOk { fg = M.green },
+      DiagnosticVirtualTextError { DiagnosticError },
+      DiagnosticVirtualTextWarn { DiagnosticWarn },
+      DiagnosticVirtualTextInfo { DiagnosticInfo },
+      DiagnosticVirtualTextHint { DiagnosticHint },
+      DiagnosticVirtualTextOk { DiagnosticOk },
+      DiagnosticUnderlineError { gui = undercurl, sp = M.error },
+      DiagnosticUnderlineWarn { gui = undercurl, sp = M.warn },
+      DiagnosticUnderlineInfo { gui = undercurl, sp = M.info },
+      DiagnosticUnderlineHint { gui = undercurl, sp = M.info },
+      DiagnosticUnderlineOk { gui = undercurl, sp = M.green },
+      DiagnosticFloatingError { DiagnosticError },
+      DiagnosticFloatingWarn { DiagnosticWarn },
+      DiagnosticFloatingInfo { DiagnosticInfo },
+      DiagnosticFloatingHint { DiagnosticHint },
+      DiagnosticFloatingOk { DiagnosticOk },
+      DiagnosticSignError { DiagnosticError },
+      DiagnosticSignWarn { DiagnosticWarn },
+      DiagnosticSignInfo { DiagnosticInfo },
+      DiagnosticSignHint { DiagnosticHint },
+      DiagnosticSignOk { DiagnosticOk },
+      DiagnosticUnnecessary { Comment, gui = underdashed },
+      DiagnosticDeprecated { gui = strikethrough },
 
-    -- ╭─────────────────────────────────────────────────────────╮
-    -- │                     treesitter                          │
-    -- ╰─────────────────────────────────────────────────────────╯
+      -- ╭─────────────────────────────────────────────────────────╮
+      -- │                     treesitter                          │
+      -- ╰─────────────────────────────────────────────────────────╯
 
-    sym "@constant" { Constant },
-    sym "@constant.builtin" { Constant, gui = italic }, -- constant that are built in the language: `nil` in Lua.
-    sym "@constant.macro" { Constant, gui = bold },
-    sym "@constant.numeric" { fg = M.lightblue },
+      sym "@constant" { Constant },
+      sym "@constant.builtin" { Constant, gui = italic }, -- constant that are built in the language: `nil` in Lua.
+      sym "@constant.macro" { Constant, gui = bold },
+      sym "@constant.numeric" { fg = M.lightblue },
 
-    sym "@number" { Number },
-    sym "@float" { Float },
-    sym "@boolean" { Boolean },
-    sym "@character" { Character },
-    sym "@string" { String },
-    sym "@string.regex" { Character },
-    sym "@string.escape" { Character },            -- escape characters within a string
-    sym "@symbol" { fg = M.purple, gui = italic }, -- For identifiers referring to symbols or atoms.
+      sym "@number" { Number },
+      sym "@float" { Float },
+      sym "@boolean" { Boolean },
+      sym "@character" { Character },
+      sym "@string" { String },
+      sym "@string.regex" { Character },
+      sym "@string.escape" { Character },            -- escape characters within a string
+      sym "@symbol" { fg = M.purple, gui = italic }, -- For identifiers referring to symbols or atoms.
 
-    sym "@field" { fg = M.purple },
-    sym "@property" { fg = M.purple },
-    sym "@parameter" { fg = M.fg },
-    sym "@parameter.reference" { fg = M.blue },
-    sym "@variable" { fg = M.fg },                      -- Any variable name that does not have another highlight
-    sym "@variable.builtin" { Constant, gui = italic }, -- Variable names that are defined by the languages like `this` or `self`.
-    sym "@variable.member" { Constant },
+      sym "@field" { fg = M.purple },
+      sym "@property" { fg = M.purple }, -- the key in key/value pairs
+      sym "@parameter" { fg = M.fg },
+      sym "@parameter.reference" { fg = M.blue },
 
-    sym "@function" { Function },
-    sym "@function.builtin" { Function },
-    sym "@function.macro" { Function },   -- macro defined functions: each `macro_rules` in Rust
-    sym "@method" { Function },
-    sym "@constructor" { fg = M.yellow }, -- For constructor: `{}` in Lua and Java constructors.
-    sym "@keyword.function" { Keyword },
+      sym "@variable" { fg = M.fg },                      -- Any variable name that does not have another highlight
+      sym "@variable.builtin" { Constant, gui = italic }, -- Variable names that are defined by the languages like `this` or `self`.
+      sym "@variable.member" { Constant },
+      sym "@variable.parameter.builtin" { Constant },     -- special parameters (e.g. _, it)
 
-    sym "@keyword" { Keyword },
-    sym "@conditional" { Conditional },
-    sym "@repeat" { Repeat },
-    sym "@label" { Label },
-    sym "@operator" { Operator },
-    sym "@exception" { Exception },
+      sym "@function" { Function },                       -- function definitions
+      sym "@function.builtin" { Function },               -- built-in functions
+      sym "@function.constructor" { fg = M.yellow },      -- For constructor: `{}` in Lua and Java constructors.
+      sym "@function.macro" { Function },                 -- macro defined functions: each `macro_rules` in Rust
+      sym "@function.method" { Function },
 
-    sym "@namespace" { PreProc },                        -- identifiers referring to modules and namespaces.
-    sym "@annotation" { PreProc },                       -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
-    sym "@attribute" { PreProc },                        -- Unstable
-    sym "@include" { PreProc },                          -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
+      sym "@keyword" { Keyword },                 -- keywords not fitting into specific categories
+      sym "@keyword.conditional" { Conditional }, -- keywords related to conditionals (e.g. if, else)
+      sym "@keyword.function" { Keyword },
+      sym "@keyword.repeat" { Repeat },
 
-    sym "@type" { Type },                                -- type or class definitions and annotations
-    sym "@type.builtin" { fg = M.orange, gui = italic }, -- built-in types
+      sym "@label" { Label },
+      sym "@operator" { Operator },
+      sym "@exception" { Exception },                      -- keywords related to exceptions (e.g. throw, catch)
 
-    sym "@comment" { Comment },                          -- line and block comments
-    sym "@comment.documentation" { Comment },            -- comments documenting code
-    sym "@comment.error" { fg = M.error },               -- error-type comments (e.g. ERROR, FIXME, DEPRECATED)
-    sym "@comment.warning" { fg = M.yellow },            -- warning-type comments (e.g. WARNING, FIX, HACK)
-    sym "@comment.todo" { fg = M.green },                -- todo-type comments (e.g. TODO, WIP)
-    sym "@comment.note" { fg = M.lightblue },            -- note-type comments (e.g. NOTE, INFO, XXX)
+      sym "@namespace" { PreProc },                        -- identifiers referring to modules and namespaces.
+      sym "@annotation" { PreProc },                       -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
+      sym "@attribute" { PreProc },                        -- Unstable
+      sym "@include" { PreProc },                          -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
 
-    sym "@punctuation.bracket" { fg = M.fg },            -- brackets and parens.
-    sym "@punctuation.delimiter" { Delimiter },          -- delimiters ie: `.`
-    sym "@punctuation.special" { Delimiter },            -- special punctuation that does not fall in the categories before.
+      sym "@type" { Type },                                -- type or class definitions and annotations
+      sym "@type.builtin" { fg = M.orange, gui = italic }, -- built-in types
 
-    sym "@tag" { Tag },                                  -- XML-style tag names (e.g. in XML, HTML, etc.)
-    sym "@tag.attribute" { fg = M.yellow },              -- XML-style tag attribute
-    sym "@tag.builtin" { Tag },                          -- XML-style tag names (e.g. HTML5 tags)
-    sym "@tag.delimiter" { fg = M.white },               -- XML-style tag delimeters
+      sym "@comment" { Comment },                          -- line and block comments
+      sym "@comment.documentation" { Comment },            -- comments documenting code
+      sym "@comment.error" { fg = M.error },               -- error-type comments (e.g. ERROR, FIXME, DEPRECATED)
+      sym "@comment.warning" { fg = M.yellow },            -- warning-type comments (e.g. WARNING, FIX, HACK)
+      sym "@comment.todo" { fg = M.green },                -- todo-type comments (e.g. TODO, WIP)
+      sym "@comment.note" { fg = M.lightblue },            -- note-type comments (e.g. NOTE, INFO, XXX)
 
-    sym "@text" { fg = M.fg },
-    sym "@text.emphasis" { fg = M.fg, gui = italic },
-    sym "@text.literal" { String }, -- Literal text
-    sym "@text.strike" { Comment, gui = underline },
-    sym "@text.strong" { fg = M.fg, gui = bold },
-    sym "@text.title" { fg = M.orange },               -- Text that is part of a title
-    sym "@text.underline" { fg = M.fg, gui = underline },
-    sym "@text.uri" { fg = M.green, gui = italic },    -- Any URI like a link or email
+      sym "@punctuation.bracket" { fg = M.fg },            -- brackets and parens.
+      sym "@punctuation.delimiter" { Delimiter },          -- delimiters ie: `.`
+      sym "@punctuation.special" { Delimiter },            -- special punctuation that does not fall in the categories before.
 
-    sym "@diff.plus" { DiffAdd },                      -- added text (for diff files)
-    sym "@diff.minus" { DiffDelete },                  -- deleted text (for diff files)
-    sym "@diff.delta" { DiffChange },                  -- changed text (for diff files)
+      sym "@tag" { Tag },                                  -- XML-style tag names (e.g. in XML, HTML, etc.)
+      sym "@tag.attribute" { fg = M.yellow },              -- XML-style tag attribute
+      sym "@tag.builtin" { Tag },                          -- XML-style tag names (e.g. HTML5 tags)
+      sym "@tag.delimiter" { fg = M.white },               -- XML-style tag delimeters
 
-    sym "@markup.heading" { gui = bold },              -- headings, titles (including markers)
-    sym "@markup.heading.1" { sym "@markup.heading" }, -- top-level heading
-    sym "@markup.heading.2" { sym "@markup.heading" }, -- section heading
-    sym "@markup.heading.3" { sym "@markup.heading" }, -- subsection heading
-    sym "@markup.heading.4" { sym "@markup.heading" }, -- and so on
-    sym "@markup.heading.5" { sym "@markup.heading" }, -- and so forth
-    sym "@markup.heading.6" { sym "@markup.heading" }, -- six levels ought to be enough for anybody
-    --
-    -- sym "@markup.quote" {},                         -- block quotes
-    -- sym "@markup.math" {},                          -- math environments (e.g. $ ... $ in LaTeX)
-    --
-    -- sym "@markup.link" {},                          -- text references, footnotes, citations, etc.
-    -- sym "@markup.link.label" {},                    -- link, reference descriptions
-    -- sym "@markup.link.url" {},                      -- URL-style links
-    -- sym "@markup.raw" {},                           -- literal or verbatim text (e.g. inline code)
-    -- sym "@markup.raw.block" {},                     -- literal or verbatim text as a stand-alone block
-    -- sym "@markup.list" {},                          -- list markers
-    -- sym "@markup.list.checked" {},                  -- checked todo-style list markers
-    -- sym "@markup.list.unchecked" {},                -- unchecked todo-style list markers
+      sym "@text" { fg = M.fg },
+      sym "@text.emphasis" { fg = M.fg, gui = italic },
+      sym "@text.literal" { String }, -- Literal text
+      sym "@text.strike" { Comment, gui = underline },
+      sym "@text.strong" { fg = M.fg, gui = bold },
+      sym "@text.title" { fg = M.orange },               -- Text that is part of a title
+      sym "@text.underline" { fg = M.fg, gui = underline },
+      sym "@text.uri" { fg = M.green, gui = italic },    -- Any URI like a link or email
 
+      sym "@diff.plus" { DiffAdd },                      -- added text (for diff files)
+      sym "@diff.minus" { DiffDelete },                  -- deleted text (for diff files)
+      sym "@diff.delta" { DiffChange },                  -- changed text (for diff files)
 
-    -- ╭─────────────────────────────────────────────────────────╮
-    -- │                         Plugins                         │
-    -- ╰─────────────────────────────────────────────────────────╯
-
-    GitSignsAdd { fg = M.green },
-    GitSignsChange { fg = M.grey },
-    GitSignsDelete { fg = M.darkred },
+      sym "@markup.heading" { gui = bold },              -- headings, titles (including markers)
+      sym "@markup.heading.1" { sym "@markup.heading" }, -- top-level heading
+      sym "@markup.heading.2" { sym "@markup.heading" }, -- section heading
+      sym "@markup.heading.3" { sym "@markup.heading" }, -- subsection heading
+      sym "@markup.heading.4" { sym "@markup.heading" }, -- and so on
+      sym "@markup.heading.5" { sym "@markup.heading" }, -- and so forth
+      sym "@markup.heading.6" { sym "@markup.heading" }, -- six levels ought to be enough for anybody
+      --
+      -- sym "@markup.quote" {},                         -- block quotes
+      -- sym "@markup.math" {},                          -- math environments (e.g. $ ... $ in LaTeX)
+      --
+      -- sym "@markup.link" {},                          -- text references, footnotes, citations, etc.
+      -- sym "@markup.link.label" {},                    -- link, reference descriptions
+      -- sym "@markup.link.url" {},                      -- URL-style links
+      -- sym "@markup.raw" {},                           -- literal or verbatim text (e.g. inline code)
+      -- sym "@markup.raw.block" {},                     -- literal or verbatim text as a stand-alone block
+      -- sym "@markup.list" {},                          -- list markers
+      -- sym "@markup.list.checked" {},                  -- checked todo-style list markers
+      -- sym "@markup.list.unchecked" {},                -- unchecked todo-style list markers
 
 
-  }
-end)
+      -- ╭─────────────────────────────────────────────────────────╮
+      -- │                         Plugins                         │
+      -- ╰─────────────────────────────────────────────────────────╯
+
+      GitSignsAdd { fg = M.green },
+      GitSignsChange { fg = M.grey },
+      GitSignsDelete { fg = M.darkred },
+
+
+    }
+  end
+)
 
 -- Return our parsed theme for extension or use elsewhere.
 return theme

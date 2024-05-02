@@ -89,6 +89,7 @@ local theme = lush(
       Conceal { fg = M.grey03 },
       TermCursor { Cursor },
       MatchParen { bg = M.grey03 },
+      Whitespace { fg = M.overbg }, -- also used by indent-blank-line
 
       -- gutter
       LineNr { fg = M.grey04, bg = M.bg },
@@ -96,7 +97,7 @@ local theme = lush(
       LineNrBelow { fg = M.fg.da(50) },
       CursorLineNr { fg = M.fg, gui = bold },
       SignColumn { LineNr },
-      VertSplit { fg = M.overbg, bg = M.bg }, -- column separating vertically split windows
+      VertSplit { fg = M.bg.da(-25), bg = M.bg }, -- column separating vertically split windows
       Folded { fg = M.comment, bg = M.overbg },
       FoldColumn { LineNr },
 
@@ -106,13 +107,13 @@ local theme = lush(
       Substitute = { Search },
 
       -- diffs
-      DiffAdd { bg = M.darkgreen.da(60) },
+      DiffAdd { bg = hsl(108, 28, 18) },
       DiffAdded { DiffAdd },
       DiffTextAdded { DiffAdd },
-      DiffChange { bg = M.yellow.da(80) },
+      DiffChange { bg = hsl(49, 16, 27) },
       DiffText { bg = M.grey02 },
       DiffTextChange { DiffChange },
-      DiffDelete { fg = M.red, bg = M.darkred.da(60) },
+      DiffDelete { fg = M.red, bg = hsl(0, 27, 19) },
       DiffTextDeleted { DiffDelete },
       DiffRemoved { DiffDelete },
 
@@ -330,8 +331,7 @@ local theme = lush(
       NeoTreeSignColumn { NeoTreeNormal },
       NeoTreeEndOfBuffer { fg = M.sidebar, bg = M.sidebar },
       NeoTreeStatusLine { NeoTreeEndOfBuffer },
-      NeoTreeWinSeparator { fg = M.bg }
-
+      NeoTreeWinSeparator { fg = M.bg },
     }
   end
 )

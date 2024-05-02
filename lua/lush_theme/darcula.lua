@@ -43,6 +43,7 @@ M.fg = hsl(210, 7, 82)
 -- layers
 M.overbg = M.grey02
 M.pop = M.grey03
+M.sidebar = M.bg.da(20)
 -- Text
 M.comment = M.grey
 M.error = M.red
@@ -175,7 +176,7 @@ local theme = lush(
       Special { fg = M.orange },      -- (preferred) any special symbol
       SpecialChar { Special },        -- special character in a constant
       Tag { fg = M.orange },          -- you can use CTRL-] on this
-      Delimiter { Special },          -- character that needs attention
+      Delimiter { fg = M.white },     -- character that needs attention
       SpecialComment { Special },     -- special things inside a comment
       Debug { Special },              -- debugging statements
 
@@ -235,7 +236,7 @@ local theme = lush(
 
       sym "@field" { fg = M.purple },
       sym "@property" { fg = M.purple }, -- the key in key/value pairs
-      sym "@parameter" { fg = M.fg },
+      sym "@parameter" { fg = M.yellow },
       sym "@parameter.reference" { fg = M.blue },
 
       sym "@variable" { fg = M.fg },                      -- Any variable name that does not have another highlight
@@ -324,6 +325,12 @@ local theme = lush(
       GitSignsChange { fg = M.grey },
       GitSignsDelete { fg = M.darkred },
 
+      NeoTreeNormal { bg = M.sidebar },
+      NeoTreeNormalNC { NeoTreeNormal },
+      NeoTreeSignColumn { NeoTreeNormal },
+      NeoTreeEndOfBuffer { fg = M.sidebar, bg = M.sidebar },
+      NeoTreeStatusLine { NeoTreeEndOfBuffer },
+      NeoTreeWinSeparator { fg = M.bg }
 
     }
   end

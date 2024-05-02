@@ -125,6 +125,12 @@
     "Visual",
     "VisualNOS",
     "WildMenu",
-    "vim"
+    "vim",
+        "NeoTreeNormal",
+        "NeoTreeNormalNC",
+        "NeoTreeEndOfBuffer",
+        "NeoTreeStatusLine",
+        "NeoTreeWinSeparator",
+        "NeoTreeSignColumn"
   ]
 }

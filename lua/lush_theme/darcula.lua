@@ -78,6 +78,7 @@ local theme = lush(
       FloatBorder { fg = M.grey04 },            -- Border of floating windows.
       FloatTitle { FloatBorder },               -- Title of floating windows.
       NormalNC { fg = M.fg },
+      EndOfBuffer { fg = M.bg },
 
       Visual { bg = M.blue },
       VisualNOS { fg = debug.fg, bg = debug.bg },
@@ -107,11 +108,11 @@ local theme = lush(
       Substitute = { Search },
 
       -- diffs
-      DiffAdd { bg = hsl(108, 28, 18) },
+      DiffAdd { bg = hsl(120, 16, 19) },
       DiffAdded { DiffAdd },
       DiffTextAdded { DiffAdd },
-      DiffChange { bg = hsl(49, 16, 27) },
-      DiffText { bg = M.grey02 },
+      DiffChange { bg = M.bg.da(-10) },
+      DiffText { bg = hsl(49, 16, 27) },
       DiffTextChange { DiffChange },
       DiffDelete { fg = M.red, bg = hsl(0, 27, 19) },
       DiffTextDeleted { DiffDelete },
@@ -138,7 +139,7 @@ local theme = lush(
       QuickFixLine { fg = M.grey05 },
 
       -- others
-      Directory { fg = M.white },
+      Directory { fg = M.lightblue },
       Title { fg = M.yellow },
 
       -- syntax highlighting
@@ -153,7 +154,7 @@ local theme = lush(
       String { fg = M.darkgreen },
 
       Identifier { fg = M.white },
-      Function { fg = M.orange },
+      Function { fg = M.yellow },
 
       Statement { fg = M.orange }, -- (preferred) any statement
       Label { fg = M.purple },     -- case, default, etc.
@@ -163,16 +164,16 @@ local theme = lush(
       Operator { fg = M.fg },
       Exception { fg = M.error },
 
-      PreProc { fg = M.green }, --  generic Preprocessor
-      Include { PreProc },      -- preprocessor #include
-      Define { PreProc },       -- preprocessor #define
-      Macro { PreProc },        -- same as Define
-      PreCondit { PreProc },    -- preprocessor #if, #else, #endif, etc.
+      PreProc { fg = M.purple }, --  generic Preprocessor
+      Include { PreProc },       -- preprocessor #include
+      Define { PreProc },        -- preprocessor #define
+      Macro { fg = M.green },    -- same as Define
+      PreCondit { PreProc },     -- preprocessor #if, #else, #endif, etc.
 
       Type { fg = M.yellow },
       Typedef { Type },
       StorageClass { fg = M.purple }, -- static, register, volatile, etc.
-      Structure { StorageClass },     -- struct, union, enum, etc.
+      Structure { fg = M.white },     -- struct, union, enum, etc.
 
       Special { fg = M.orange },      -- (preferred) any special symbol
       SpecialChar { Special },        -- special character in a constant
@@ -240,15 +241,15 @@ local theme = lush(
       sym "@parameter" { fg = M.yellow },
       sym "@parameter.reference" { fg = M.blue },
 
-      sym "@variable" { fg = M.fg },                      -- Any variable name that does not have another highlight
-      sym "@variable.builtin" { Constant, gui = italic }, -- Variable names that are defined by the languages like `this` or `self`.
+      sym "@variable" { fg = M.fg },                           -- Any variable name that does not have another highlight
+      sym "@variable.builtin" { fg = M.purple, gui = italic }, -- Variable names that are defined by the languages like `this` or `self`.
       sym "@variable.member" { Constant },
-      sym "@variable.parameter.builtin" { Constant },     -- special parameters (e.g. _, it)
+      sym "@variable.parameter.builtin" { Constant },          -- special parameters (e.g. _, it)
 
-      sym "@function" { Function },                       -- function definitions
-      sym "@function.builtin" { Function },               -- built-in functions
-      sym "@function.constructor" { fg = M.yellow },      -- For constructor: `{}` in Lua and Java constructors.
-      sym "@function.macro" { Function },                 -- macro defined functions: each `macro_rules` in Rust
+      sym "@function" { Function },                            -- function definitions
+      sym "@function.builtin" { Function, gui = italic },      -- built-in functions
+      sym "@function.constructor" { fg = M.yellow },           -- For constructor: `{}` in Lua and Java constructors.
+      sym "@function.macro" { Function },                      -- macro defined functions: each `macro_rules` in Rust
       sym "@function.method" { Function },
 
       sym "@keyword" { Keyword },                 -- keywords not fitting into specific categories
@@ -256,14 +257,16 @@ local theme = lush(
       sym "@keyword.function" { Keyword },
       sym "@keyword.repeat" { Repeat },
 
-      sym "@label" { Label },
-      sym "@operator" { Operator },
-      sym "@exception" { Exception },                      -- keywords related to exceptions (e.g. throw, catch)
+      sym "@module" { fg = M.purple },         -- modules or namespaces
+      sym "@module.builtin" { fg = M.purple }, -- built-in modules or namespaces
+      sym "@label" { Label },                  -- GOTO and other labels (e.g. label: in C), including heredoc labels
 
-      sym "@namespace" { PreProc },                        -- identifiers referring to modules and namespaces.
-      sym "@annotation" { PreProc },                       -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
-      sym "@attribute" { PreProc },                        -- Unstable
-      sym "@include" { PreProc },                          -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
+      sym "@operator" { Operator },
+      sym "@exception" { Exception }, -- keywords related to exceptions (e.g. throw, catch)
+      --
+      -- sym "@annotation" { PreProc },                       -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
+      -- sym "@attribute" { PreProc },                        -- Unstable
+      -- sym "@include" { PreProc },                          -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
 
       sym "@type" { Type },                                -- type or class definitions and annotations
       sym "@type.builtin" { fg = M.orange, gui = italic }, -- built-in types
@@ -319,6 +322,19 @@ local theme = lush(
 
 
       -- ╭─────────────────────────────────────────────────────────╮
+      -- │                           LSP                           │
+      -- ╰─────────────────────────────────────────────────────────╯
+
+      sym "@lsp.type.property" { fg = M.yellow },
+
+      sym "@lsp.mod.library.rust" { fg = M.purple },
+      sym "@lsp.typemod.namespace.library" { gui = italic },
+      sym "@lsp.typemod.struct.library" { fg = M.white },
+      sym "@lsp.typemod.interface.library" { sym "@lsp.typemod.struct.library" },
+      sym "@lsp.typemod.method.consuming" { Function },
+
+
+      -- ╭─────────────────────────────────────────────────────────╮
       -- │                         Plugins                         │
       -- ╰─────────────────────────────────────────────────────────╯
 
@@ -332,6 +348,8 @@ local theme = lush(
       NeoTreeEndOfBuffer { fg = M.sidebar, bg = M.sidebar },
       NeoTreeStatusLine { NeoTreeEndOfBuffer },
       NeoTreeWinSeparator { fg = M.bg },
+
+
     }
   end
 )

@@ -131,6 +131,10 @@
         "NeoTreeEndOfBuffer",
         "NeoTreeStatusLine",
         "NeoTreeWinSeparator",
-        "NeoTreeSignColumn"
+        "NeoTreeSignColumn",
+        "TabLine",
+        "TabLineFill",
+        "TabLineSel",
+        "Whitespace"
   ]
 }

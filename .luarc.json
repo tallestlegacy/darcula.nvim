@@ -1,4 +1,8 @@
 {
+  "Lua.format.defaultConfig": {
+    "indent_style": "tab",
+    "indent_size": "4"
+  },
   "diagnostics.globals": [
     "Bold",
     "Boolean",
@@ -86,6 +90,12 @@
     "ModeMsg",
     "MsgArea",
     "MsgSeparator",
+    "NeoTreeEndOfBuffer",
+    "NeoTreeNormal",
+    "NeoTreeNormalNC",
+    "NeoTreeSignColumn",
+    "NeoTreeStatusLine",
+    "NeoTreeWinSeparator",
     "Normal",
     "NormalFloat",
     "NormalNC",
@@ -114,6 +124,9 @@
     "String",
     "Structure",
     "Substitute",
+    "TabLine",
+    "TabLineFill",
+    "TabLineSel",
     "Tag",
     "TermCursor",
     "Title",
@@ -124,17 +137,8 @@
     "VertSplit",
     "Visual",
     "VisualNOS",
+    "Whitespace",
     "WildMenu",
-    "vim",
-        "NeoTreeNormal",
-        "NeoTreeNormalNC",
-        "NeoTreeEndOfBuffer",
-        "NeoTreeStatusLine",
-        "NeoTreeWinSeparator",
-        "NeoTreeSignColumn",
-        "TabLine",
-        "TabLineFill",
-        "TabLineSel",
-        "Whitespace"
+    "vim"
   ]
 }

@@ -3,6 +3,9 @@
 A Darcula theme, for Neovim.  
 Work in progress.
 
+![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/78fbaa05-e878-45c1-b1cc-8d119ed43840)
+
+
 ## Installation
 
 For lazy.nvim users
@@ -22,8 +25,6 @@ And vim-plug
 ```vim
 Plug "tallestlegacy/darcula.nvim"
 ```
-
-![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/17a3d80b-cc48-4548-a27c-7ed1cd5f388c)
 
 ## Features
 

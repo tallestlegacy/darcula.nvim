@@ -73,7 +73,7 @@ local function getPallette()
       bg = M.layers.light[1],
     },
     sidebar = {
-      fg = M.layers.light[3],
+      fg = M.layers.light[4],
       bg = M.layers.dark[1],
     },
     menu = {

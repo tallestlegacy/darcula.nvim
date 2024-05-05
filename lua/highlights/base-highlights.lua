@@ -1,7 +1,5 @@
 local helpers = require("utils.helpers")
 
-local bold, italic, underline, undercurl, underdashed, strikethrough =
-    "bold", "italic", "underline", "undercurl", "underdashed", "strikethrough"
 
 return {
   -- @param palette any
@@ -37,7 +35,7 @@ return {
       LineNr = { fg = palette.layers.light[4], bg = palette.bg },
       LineNrAbove = { fg = palette.layers.light[5] },
       LineNrBelow = { link = "LineNrAbove" },
-      CursorLineNr = { fg = palette.fg },               -- gui = bold },
+      CursorLineNr = { fg = palette.fg, bold = true },
       SignColumn = { link = "LineNr" },
       VertSplit = { fg = palette.fg, bg = palette.bg }, -- column separating vertically split windows
       Folded = { fg = palette.text.comment, bg = palette.overbg },
@@ -60,7 +58,7 @@ return {
       DiffRemoved = { link = "DiffDelete" },
 
       -- spell
-      -- SpellBad = { gui = undercurl },
+      SpellBad = { undercurl = true },
 
       -- statusline
       StatusLine = { fg = palette.ui.statusline.bg, bg = palette.ui.statusline.bg }, -- invisible white space
@@ -85,7 +83,7 @@ return {
 
       -- syntax highlighting
 
-      Comment = { fg = palette.text.comment }, -- gui = italic },
+      Comment = { fg = palette.text.comment, italic = true },
 
       Constant = { fg = palette.colors.lightblue },
       Number = { link = "Constant" },
@@ -103,15 +101,15 @@ return {
       Conditional = { link = "Statement" },
       Repeat = { link = "Statement" },
       Operator = { fg = palette.colors.white },
-      Exception = { fg = palette.text.error },
+      Exception = { fg = palette.text.error },       -- error handlers
 
-      PreProc = { fg = palette.colors.purple }, --  generic Preprocessor
-      Include = { link = "PreProc" },           -- preprocessor #include
-      Define = { link = "PreProc" },            -- preprocessor #define
-      Macro = { fg = palette.colors.green },    -- same as Define
-      PreCondit = { link = "PreProc" },         -- preprocessor #if, #else, #endif, etc.
+      PreProc = { fg = palette.colors.purple },      --  generic Preprocessor
+      Include = { link = "PreProc" },                -- preprocessor #include
+      Define = { link = "PreProc" },                 -- preprocessor #define
+      Macro = { fg = palette.colors.green },         -- same as Define
+      PreCondit = { link = "PreProc" },              -- preprocessor #if, #else, #endif, etc.
 
-      Type = { fg = palette.colors.yellow },
+      Type = { fg = palette.colors.yellow },         -- types
       Typedef = { link = "Type" },
       StorageClass = { fg = palette.colors.purple }, -- static, register, volatile, etc.
       Structure = { fg = palette.colors.white },     -- struct, union, enum, etc.
@@ -123,12 +121,12 @@ return {
       SpecialComment = { link = "Special" },         -- special things inside a comment
       Debug = { link = "Special" },                  -- debugging statements
 
-      -- Underlined = { gui = underline },
-      -- Bold = { gui = bold },
-      -- Italic = { gui = italic },
-      Ignore = { fg = palette.text.comment }, --  left blank, hidden  |hl-Ignore|
-      Error = { fg = palette.text.error },    --  any erroneous construct
-      -- Todo = { fg = palette.text.todo, gui = bold }, --  anything that needs extra attention
+      Underlined = { underline = true },
+      Bold = { bold = true },
+      Italic = { italic = true },
+      Ignore = { fg = palette.text.comment },         --  left blank, hidden  |hl-Ignore|
+      Error = { fg = palette.text.error },            --  any erroneous construct
+      Todo = { fg = palette.text.todo, bold = true }, --  anything that needs extra attention
 
       -- diagnostics
       DiagnosticError = { fg = palette.text.error },
@@ -141,11 +139,11 @@ return {
       DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" },
       DiagnosticVirtualTextHint = { link = "DiagnosticHint" },
       DiagnosticVirtualTextOk = { link = "DiagnosticOk" },
-      -- DiagnosticUnderlineError = { gui = undercurl, sp = palette.text.error },
-      -- DiagnosticUnderlineWarn = { gui = undercurl, sp = palette.text.warn },
-      -- DiagnosticUnderlineInfo = { gui = undercurl, sp = palette.text.info },
-      -- DiagnosticUnderlineHint = { gui = undercurl, sp = palette.text.info },
-      -- DiagnosticUnderlineOk = { gui = undercurl, sp = palette.text.green },
+      DiagnosticUnderlineError = { undercurl = true, sp = palette.text.error },
+      DiagnosticUnderlineWarn = { undercurl = true, sp = palette.text.warn },
+      DiagnosticUnderlineInfo = { undercurl = true, sp = palette.text.info },
+      DiagnosticUnderlineHint = { undercurl = true, sp = palette.text.info },
+      DiagnosticUnderlineOk = { undercurl = true, sp = palette.text.green },
       DiagnosticFloatingError = { link = "DiagnosticError" },
       DiagnosticFloatingWarn = { link = "DiagnosticWarn" },
       DiagnosticFloatingInfo = { link = "DiagnosticInfo" },
@@ -156,8 +154,8 @@ return {
       DiagnosticSignInfo = { link = "DiagnosticInfo" },
       DiagnosticSignHint = { link = "DiagnosticHint" },
       DiagnosticSignOk = { link = "DiagnosticOk" },
-      -- DiagnosticUnnecessary = { link = "Comment", gui = underdashed },
-      -- DiagnosticDeprecated = { gui = strikethrough },
+      DiagnosticUnnecessary = { link = "Comment", underdashed = true },
+      DiagnosticDeprecated = { strikethrough = true },
     }
 
     return helpers.mergeTables(scheme, M)

@@ -1,15 +1,13 @@
 local palette = require("darcula.palette").default
-local helpers = require("utils.helpers")
 
-local base_highlights = require("highlights.base-highlights")
-local plugin_highlights = require("highlights.plugins")
 
 return {
   load = function()
     -- load base highlights
 
-    local scheme = base_highlights.apply(palette, {})
-    scheme = plugin_highlights.apply(palette, scheme)
+    local scheme = require("highlights.base-highlights").apply(palette, {})
+    scheme = require("highlights.plugins").apply(palette, scheme)
+    scheme = require("highlights.treesitter").apply(palette, scheme)
 
     -- reset colors
     if vim.g.colors_name then vim.cmd.hi("clear") end
@@ -18,9 +16,6 @@ return {
     vim.opt.background = "dark"
     vim.o.termguicolors = true
     vim.g.colors_name = "darcula"
-
-
-
 
     -- add highlights
     for group, settings in pairs(scheme) do

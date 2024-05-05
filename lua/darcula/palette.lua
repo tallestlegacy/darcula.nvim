@@ -1,64 +1,53 @@
-local lush = require("lush")
-local hsl = lush.hsl
-
 local function getPallette()
   local M = {}
 
   M.colors = {
-    black = hsl(0, 0, 0),
-    white = hsl(0, 0, 80),
-    grey = hsl(0, 0, 50),
-
-    blue = hsl(199, 69, 20),
-    lightblue = hsl(210, 63, 63),
-
-    darkgreen = hsl(108, 28, 46),
-    green = hsl(120, 61, 50),
-
-    darkred = hsl(17, 61, 40),
-    red = hsl(0, 100, 50),
-
-    orange = hsl(27, 61, 50),
-    purple = hsl(279, 23, 56),
-    yellow = hsl(51, 76, 72),
+    black = "#000000",
+    white = "#d0d0d0",
+    grey = "#808080",
+    red = "#aa2222",
+    darkred = "#a34a27",
+    orange = "#cc7832",
+    yellow = "#eedd82",
+    green = "#32cd32",
+    darkgreen = "#629755",
+    lightblue = "#6897bb",
+    blue = "#104158",
+    purple = "#9876aa",
   }
 
   --
   -- Base colors
   --
-  M.base = hsl(0, 0, 16)
+  M.base = "#282828"
 
   --
   -- layers
   --
   M.layers = {
     dark = {
-      M.base.da(10),
-      M.base.da(20),
-      M.base.da(30),
-      M.base.da(40),
-      M.base.da(50),
+      "#202020",
+      "#1a1a1a",
+      "#151515",
+      "#111111",
+      "#0e0e0e",
     },
     light = {
-      M.base.da(-5),
-      M.base.da(-10),
-      M.base.da(-15),
-      M.base.da(-20),
-      M.base.da(-25),
-      M.base.da(-30),
-      M.base.da(-35),
-      M.base.da(-40),
-      M.base.da(-45),
-      M.base.da(-50),
-      M.base.da(-55),
-      M.base.da(-60),
+      "#333333",
+      "#3d3d3d",
+      "#474747",
+      "#505050",
+      "#595959",
+      "#616161",
+      "#696969",
+      "#717171",
     },
   }
 
   --
   -- Base palette
   --
-  M.fg = hsl(210, 7, 82)
+  M.fg = "#ced1d4"
   M.bg = M.base
   M.overbg = M.layers.light[1]
 
@@ -85,7 +74,7 @@ local function getPallette()
     },
     sidebar = {
       fg = M.layers.light[3],
-      bg = M.layers.dark[3],
+      bg = M.layers.dark[1],
     },
     menu = {
       fg = M.colors.white,
@@ -99,7 +88,7 @@ local function getPallette()
   -- Editor
   --
   M.editor = {
-    selection = hsl(200, 38, 18),
+    selection = "#1c343f",
   }
 
   --
@@ -111,7 +100,7 @@ local function getPallette()
     -- diagnostics etc.
     error = M.colors.red,
     warn = M.colors.orange,
-    info = M.colors.lightblue.da(-40),
+    info = M.colors.lightblue,
     todo = M.colors.green,
   }
 
@@ -120,11 +109,11 @@ local function getPallette()
   --
   M.git = {
     diff   = {
-      text = hsl(49, 16, 27),
+      text = "#504c3a",
     },
     add    = {
       fg = M.colors.green,
-      bg = hsl(120, 16, 19),
+      bg = "#293829",
       text = M.colors.darkgreen,
     },
     change = {
@@ -134,8 +123,8 @@ local function getPallette()
     },
     delete = {
       fg = M.colors.red,
-      bg = hsl(0, 27, 19),
-      text = hsl(0, 100, 73),
+      bg = "#3e2323",
+      text = "#ff7575",
     }
   }
   return M

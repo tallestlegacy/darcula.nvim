@@ -37,7 +37,8 @@ Plug "tallestlegacy/darcula.nvim"
 ## Features
 
 ### Pretty ok diffs support
-![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/6371f4c9-9bdf-46cc-a0f7-8e16e38e7dd6)
+![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/8d22b35d-f082-451e-8632-9c59ddb071f2)
+
 
 ## Plugin support
 

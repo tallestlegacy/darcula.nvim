@@ -8,27 +8,18 @@ Work in progress.
 For lazy.nvim users
 
 ```lua
-{
-    "tallestlegacy/darcula.nvim",
-    dependencies = "rktjmp/lush.nvim",
-    lazy = false,
-}
+{ "tallestlegacy/darcula.nvim" }
 ```
 
 For packer, i guess
 
 ```lua
-{
-    "tallestlegacy/darcula.nvim",
-    requires = "rktjmp/lush.nvim",
-    lazy = false,
-}
+{ "tallestlegacy/darcula.nvim" }
 ```
 
 And vim-plug
 
 ```vim
-Plug "rktjmp/lush.nvim"
 Plug "tallestlegacy/darcula.nvim"
 ```
 
@@ -37,20 +28,20 @@ Plug "tallestlegacy/darcula.nvim"
 ## Features
 
 ### Pretty ok diffs support
-![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/8d22b35d-f082-451e-8632-9c59ddb071f2)
 
+![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/8d22b35d-f082-451e-8632-9c59ddb071f2)
 
 ## Plugin support
 
 The look kinda ok now, but could be better.
 PLanning on supporting :
 
-- [x] GitSgns
-- [x] DiffsView
-- [ ] Barbar & Bufferline
-- [ ] ToggleTerm
-- [ ] Lualine & Lightline
-
-
-
-
+| Progress | Plugin     | Status                             |
+| -------- | ---------- | ---------------------------------- |
+| ✅       | GitSigns   | usable                             |
+| ✅       | DiffsView  | very usable                        |
+| ☑️       | Bufferline | usable but not customised          |
+| ☑️       | Barbar     | usable but not customised          |
+| ☑️       | ToggleTerm | usable with native terminal colors |
+| ✅       | Lualine    | usable, with basic customisations  |
+|          | Lightline  | untested                           |

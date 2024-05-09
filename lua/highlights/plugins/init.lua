@@ -6,10 +6,11 @@
 local M = {}
 
 function M.apply(palette, scheme)
-  local M = require("highlights.plugins.git-signs").apply(palette, scheme)
-  M = require("highlights.plugins.neo-tree").apply(palette, M)
+  local sch = require("highlights.plugins.git-signs").apply(palette, scheme)
+  sch = require("highlights.plugins.neo-tree").apply(palette, sch)
+  sch = require("highlights.plugins.indent-blankline").apply(palette, sch)
 
-  return M
+  return sch
 end
 
 return M

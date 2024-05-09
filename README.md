@@ -1,10 +1,9 @@
+![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/78fbaa05-e878-45c1-b1cc-8d119ed43840)
+
 # Darcula.nvim
 
 A Darcula theme, for Neovim.  
 Work in progress.
-
-![image](https://github.com/tallestlegacy/darcula.nvim/assets/71118951/78fbaa05-e878-45c1-b1cc-8d119ed43840)
-
 
 ## Installation
 

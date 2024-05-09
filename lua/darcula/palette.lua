@@ -7,7 +7,7 @@ local function getPallette()
     grey = "#808080",
     red = "#aa2222",
     darkred = "#a34a27",
-    orange = "#cc7832",
+    orange = "#cb7832",
     yellow = "#eedd82",
     green = "#32cd32",
     darkgreen = "#629755",

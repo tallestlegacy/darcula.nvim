@@ -13,7 +13,7 @@ return {
     a = { bg = palette.colors.lightblue, fg = palette.colors.black, gui = "bold" },
   },
   command = {
-    a = { bg = palette.colors.purple, fg = palette.colors.white, gui = "bold" },
+    a = { bg = palette.colors.orange, fg = palette.colors.black, gui = "bold" },
   },
   terminal = {
     a = { bg = palette.colors.purple, fg = palette.colors.black, gui = "bold" },

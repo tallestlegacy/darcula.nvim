@@ -11,6 +11,8 @@ return {
       -- │                        Builtin                          │
       -- ╰─────────────────────────────────────────────────────────╯
 
+      NonText = { fg = palette.colors.grey },
+
       -- layers
       Normal = { fg = palette.fg, bg = palette.bg },                   -- background color
       NormalFloat = { fg = palette.fg, bg = palette.layers.light[2] }, -- modal UI
@@ -37,7 +39,7 @@ return {
       LineNrBelow = { link = "LineNrAbove" },
       CursorLineNr = { fg = palette.fg, bold = true },
       SignColumn = { link = "LineNr" },
-      VertSplit = { fg = palette.fg, bg = palette.bg }, -- column separating vertically split windows
+      VertSplit = { fg = palette.ui.border, bg = palette.bg }, -- column separating vertically split windows
       Folded = { fg = palette.text.comment, bg = palette.overbg },
       FoldColumn = { link = "LineNr" },
 

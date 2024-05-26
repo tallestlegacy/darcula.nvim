@@ -12,6 +12,9 @@ return {
     -- reset colors
     if vim.g.colors_name then vim.cmd.hi("clear") end
 
+    -- load terminal highlights
+    require("highlights.terminal").apply(palette)
+
     -- okay defaults
     vim.opt.background = "dark"
     vim.o.termguicolors = true

@@ -39,7 +39,8 @@ return {
       LineNrBelow = { link = "LineNrAbove" },
       CursorLineNr = { fg = palette.fg, bold = true },
       SignColumn = { link = "LineNr" },
-      VertSplit = { fg = palette.ui.border, bg = palette.bg }, -- column separating vertically split windows
+      WinSeparator = { fg = palette.ui.border, bg = palette.bg },
+      VertSplit = { link = "WinSeparator" }, -- column separating vertically split windows
       Folded = { fg = palette.text.comment, bg = palette.overbg },
       FoldColumn = { link = "LineNr" },
 

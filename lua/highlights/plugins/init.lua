@@ -7,8 +7,9 @@ local M = {}
 function M.apply(palette, scheme)
   local plugin_modules = {
     "git-signs",
-    "neo-tree",
     "indent-blankline",
+    "lazy",
+    "neo-tree",
     "nvim-tree",
   }
 
